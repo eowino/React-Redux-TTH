@@ -1,47 +1,52 @@
 import React, { Component } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 export default class AddPlayerForm extends Component {
+  static propTypes = {
+    addPlayer: PropTypes.func.isRequired
+  };
+
+  state = {
+    name: ""
+  };
+
   constructor(props) {
     super(props);
-    this.state = {
-        name: ''
-    };
-    this.onSubmit = this.onSubmit.bind(this);
+    this.addPlayer = this.addPlayer.bind(this);
     this.onNameChange = this.onNameChange.bind(this);
   }
 
-  onSubmit(evt) {
-      evt.preventDefault();
-      this.props.onAdd(this.state.name);
-      this.setState(() => {
-          return {
-              name: ''
-          }
-      });
+  addPlayer(evt) {
+    evt.preventDefault();
+    this.props.addPlayer(this.state.name);
+    this.setState(() => {
+      return {
+        name: ""
+      };
+    });
   }
 
   onNameChange(evt) {
-      let value = evt.target.value;
-      this.setState(() => {
-          return {
-              name: value
-          }
-      });
+    let value = evt.target.value;
+    this.setState(() => {
+      return {
+        name: value
+      };
+    });
   }
 
   render() {
     return (
       <div className="add-player-form">
-        <form onSubmit={this.onSubmit}>
-          <input type="text" value={this.state.name} onChange={this.onNameChange} />
+        <form onSubmit={this.addPlayer}>
+          <input
+            type="text"
+            value={this.state.name}
+            onChange={this.onNameChange}
+          />
           <input type="submit" value="Add Player" />
         </form>
       </div>
     );
   }
 }
-
-AddPlayerForm.propTypes = {
-    onAdd: PropTypes.func.isRequired
-};

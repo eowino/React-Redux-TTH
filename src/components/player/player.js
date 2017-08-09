@@ -7,13 +7,14 @@ const Player = (props) => {
     return (
         <div className="player">
             <div className="player-name">
-            <a className="remove-player" onClick={props.onRemove}>✖</a>    
+            <a className="remove-player" onClick={ () => props.removePlayer(props.index) }>✖</a>    
             {props.person.name}
             </div>
             <div className="player-score">
                 <Counter 
                     score={props.person.score}
-                    onChange={props.onScoreChange} />
+                    index={props.index}
+                    updatePlayerScore={props.updatePlayerScore} />
             </div>
         </div>
     );
@@ -21,8 +22,9 @@ const Player = (props) => {
 
 Player.propTypes = {
     person: PropTypes.object.isRequired,
-    onScoreChange: PropTypes.func.isRequired,
-    onRemove: PropTypes.func.isRequired
+    index: PropTypes.number.isRequired,
+    updatePlayerScore: PropTypes.func.isRequired,
+    removePlayer: PropTypes.func.isRequired
 };
 
 export default Player;
