@@ -2,7 +2,7 @@
   "name": "app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://eowino.github.io/React-Scoreboard/",
+  "homepage": "https://eowino.github.io/React-Redux-TTH/",
   "devDependencies": {
     "gh-pages": "^1.0.0",
     "react-scripts": "1.0.10"
