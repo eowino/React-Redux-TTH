@@ -15,7 +15,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <Scoreboard players={store.getState()}/>
+        <Scoreboard state={store.getState()}/>
     </Provider>
     , document.getElementById('root'));
 registerServiceWorker();
